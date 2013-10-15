@@ -1,0 +1,7 @@
+markdown: rdiscount
+safe: false
+lsi: false
+pygments: true
+exclude: ['node_modules', 'Gruntfile.coffee', 'package.json', 'params.json', 'README.md', '_archive', 'assets', 'tmp']
+
+destination: _build
