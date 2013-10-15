@@ -1,0 +1,114 @@
+
+
+/* Set <html> and <body> to inherit the height of the viewport */
+html,
+body {
+	min-height: 100%;
+}
+
+/**
+ * NOTE: Use `text-rendering` with caution - http://cbrac.co/SJt8p1
+ * NOTE: Avoid the webkit anti-aliasing trap - http://cbrac.co/TAdhbH
+ * 1. Force a vertical scrollbar - http://cbrac.co/163MspB
+ * 2. Remove iOS text size adjust without disabling user zoom
+ */
+
+html {
+	overflow-y: scroll; /* 1 */
+	font-family: sans-serif; /* 1 */
+}
+
+/**
+ * 1. Inherits percentage declared on above <html> as the root `font-size`
+ * 2. Unitless `line-height`, which acts as a multiple of the root `font-size`
+ */
+body {
+  @extend %zero;
+}
+
+/*
+ * Remove text-shadow in selection highlight: h5bp.com/i
+ * These selection rule sets have to be separate.
+ * Customize the background color to match your design.
+ */
+
+::selection {
+    background: $selectioncolor;
+    text-shadow: none;
+}
+
+/* Change `background` for text selections when browser is unfocused */
+::selection:window-inactive {
+	background: $inactiveselectioncolor;
+}
+
+/* Remove `background` on images when selected */
+img::selection {
+	background: transparent;
+}
+
+/* Define a mobile tap highlight color (iOS 1.1.1+) */
+a:link {
+	-webkit-tap-highlight-color: $tapcolor;
+}
+
+
+/*
+ * Remove the gap between images and the bottom of their containers: h5bp.com/i/440
+ * 1. Remove border when inside `a` element in IE 8/9.
+ */
+img {
+  vertical-align: middle;
+  @extend %full-width;
+  border: 0; /* 1 */
+}
+
+/*
+ * Remove default fieldset styles.
+ */
+fieldset {
+  border: 0;
+  @extend %zero;
+}
+
+/*
+ * Allow only vertical resizing of textareas.
+ * 1. Remove default vertical scrollbar in IE 8/9.
+ * 2. Improve readability and alignment in all browsers.
+ */
+
+textarea {
+  resize: vertical;
+  overflow: auto; /* 1 */
+  vertical-align: top; /* 2 */
+
+}
+
+/* Fluid-width <audio> elements */
+audio {
+	@extend %full-width;
+}
+
+/* Fluid-width media that maintain their aspect ratios */
+img,
+video {
+	max-width: 100%;
+	width: auto;
+	height: auto !important;
+}
+
+
+// Basic typography
+abbr,
+acronym,
+dfn[title] {
+	cursor: help;
+}
+
+details {
+	cursor: pointer;
+}
+
+abbr a {
+	text-decoration: none;
+}

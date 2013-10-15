@@ -1,0 +1,77 @@
+/*--------------------*\
+  Breakpoints
+\*--------------------*/
+$bp1: em(478px);
+$bp2: em(480px);
+$bp3: em(600px);
+$bp4: em(768px);
+$bp5: em(992px);
+$bp6: em(1382px);
+
+/*--------------------*\
+  Grid
+\*--------------------*/
+$horizontal-gutter: 24px!default;
+$vertical-gutter:   24px!default;
+/*--------------------*\
+  Nav options
+\*--------------------*/
+$navMenuWidth: 90%;
+$transitionSpeed: .3s;
+
+
+/*--------------------*\
+  Font Sizes
+\*--------------------*/
+$small: 0.667em;
+$h6   : 0.75em;
+$h5   : 0.83em;
+$base : 1em;
+$h4   : 1em;
+$h3   : 1.17em;
+$h2   : 1.75em;
+$h1   : 2em;
+
+/*--------------------*\
+  Colors
+\*--------------------*/
+$primarycolor 					: #000; //#d35400;
+$secondarycolor 				: #000; //#f39c12;
+
+$neutralcolor 					: #ddd; //#2c3e50;
+$darkneutralcolor 			: darken($neutralcolor,20%);
+$lightneutralcolor 			: lighten($neutralcolor, 20%);
+
+$black 							    : #000;
+$white 							    : #fff;
+
+$textcolor              : #000;
+$fadedtextcolor         : lighten($textcolor, 50%);
+
+$tapcolor               : #ff0000;
+$selectioncolor         : #ff0000;
+$inactiveselectioncolor : #ff0000;
+
+$linkcolor 		    			: $primarycolor;
+$linkcolorhover 				: $secondarycolor;
+$linkcolorvisited   		: darken($linkcolorhover, 10%);
+
+$alertcolor 					: rgb(218,79,73);
+$errorcolor 					: rgb(176,20,0);
+$infocolor 						: rgb(216,220,162);
+$inversecolor 				: rgb(65,65,65);
+$successcolor 				: rgb(188,212,222);
+$warningcolor 				: $errorcolor;
+
+// deprecated
+$lighterneutralcolor 		: #ff0000;
+$lightestneutralcolor 	: #ff0000;
+$midneutralcolor        : #ff0000;
+
+$homecolor:    #A0D468;
+$aboutcolor:   #FC6E51;
+$artistcolor:  #5D9CEC;
+$newscolor:    #656D78;
+$tagcolor:     #FFCE54;
+$privacycolor: #48CFAD;
+$termscolor:   #EC87C0;
