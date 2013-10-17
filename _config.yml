@@ -2,6 +2,49 @@ markdown: rdiscount
 safe: false
 lsi: false
 pygments: true
-exclude: ['node_modules', 'Gruntfile.coffee', 'package.json', 'params.json', 'README.md', '_archive', 'assets', 'tmp']
+exclude: ['node_modules', 'Gruntfile.coffee', 'package.json', 'params.json', 'README.md', '_archive', 'assets/css', 'assets/js', 'tmp']
 
 destination: _build
+
+# Site stuff
+permalink: /:categories/:title
+charset:   utf-8
+baseurl:   /
+url:       http://localhost:4000
+
+tag_page_layout: tag_page
+tag_page_dir: tag
+
+# Specific stuff
+version:      0.0.1
+date:         2013-10-15
+language:     en-GB
+license:      Apache License v2.0. http://www.apache.org/licenses/LICENSE-2.0
+
+name:         Canadian Pairs
+name_short:   cp
+tagline:      "Presented by WestJet"
+color:        #1f978c
+email:        gregdaynes@gmail.com
+# Copyright: company or name to copyright year is generated from date above.
+
+copyright:    Inside Golf Inc. All rights reserved
+google:       UA-210752-16
+creator:      http://twitter.com/gregdaynes
+publisher:    Gregory Daynes
+keywords:
+description:
+twitter:      canadianpairs
+twitter_card: summary
+
+title-delimiter: ' • '
+
+
+# Prefetch
+dns-prefetch:
+  - twitter.com
+  - facebook.com
+  - mailchimp.com
+
+#resource-prefetch:
+
