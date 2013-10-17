@@ -19,7 +19,7 @@ module.exports = (grunt) ->
 
     shell:
       dev:
-        command: 'rm -rf build; mkdir tmp;'
+        command: 'rm -rf _build; rm -rf tmp; mkdir tmp;'
 
     jekyll:
       config: '_config.yml'
@@ -53,9 +53,14 @@ module.exports = (grunt) ->
           base: '_build'
           livereload: true
 
+    copy:
+      images:
+        src: 'assets/img/**/*'
+        dest: '_build/assets/img/'
+
     watch:
       coffee:
-        files: '**/*.js'
+        files: '**/*.coffee'
         tasks: ['coffee']
       sass:
         files: '**/*.scss'
@@ -66,6 +71,9 @@ module.exports = (grunt) ->
       markdown:
         files: '**/*.md'
         tasks: ['jekyll-build']
+      images:
+        files: 'assets/img/**/*.*'
+        tasks: ['copy:images']
       livereload:
         options:
           livereload: true
@@ -75,7 +83,7 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks 'grunt-autoprefixer'
   grunt.loadNpmTasks 'grunt-contrib-coffee'
   grunt.loadNpmTasks 'grunt-contrib-connect'
-# grunt.loadNpmTasks 'grunt-contrib-copy'
+  grunt.loadNpmTasks 'grunt-contrib-copy'
 # grunt.loadNpmTasks 'grunt-contrib-cssmin'
   grunt.loadNpmTasks 'grunt-contrib-htmlmin'
   grunt.loadNpmTasks 'grunt-contrib-sass'
@@ -86,4 +94,4 @@ module.exports = (grunt) ->
   # Default task.
   grunt.registerTask 'default', ['shell:dev', 'jekyll', 'sass:dev', 'autoprefixer:dev', 'coffee:dev', 'connect', 'watch']
 
-  grunt.registerTask 'jekyll-build', ['jekyll', 'sass:dev', 'autoprefixer:dev', 'coffee:dev']
+  grunt.registerTask 'jekyll-build', ['shell:dev', 'jekyll', 'sass:dev', 'autoprefixer:dev', 'coffee:dev']
