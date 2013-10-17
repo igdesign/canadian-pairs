@@ -1,0 +1,28 @@
+{% include html/doctype.html %}
+{% include html/license.html %}
+{% include html/conditional.html %}
+{% include html/head.html %}
+
+<body {% if page.body-class != null %}class="{{page.body-class}}"{% endif %}>
+
+  <div class="page-wrapper">
+
+    <!-- Menu Collapse Handler -->
+    <input type="checkbox" name="handler" id="handler" class="main-site-navigation-handler" onclick="null" />
+    <label for="handler" class="main-site-navigation-handler-label" href="#">Menu</label>
+
+
+    {% include elements/nav.html %}
+
+    {% include elements/header.html %}
+
+    {{content}}
+
+    {% include elements/colophon.html %}
+
+    {% include elements/footer.html %}
+
+    {% include html/scripts.html %}
+    {% include html/analytics.html %}
+
+  </div>

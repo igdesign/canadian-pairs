@@ -1,0 +1,19 @@
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={{site.charset}}">
+<meta http-equiv="cleartype" content="on">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<title>{% include fragment/html-head_title.html %}</title>
+
+<!-- Stylesheets -->
+<link rel="stylesheet" href="/assets/css/style.css" type="text/css" />
+
+<!-- Icons -->
+<link rel="logo" type="image/svg" href="{{site.url}}/logo.svg" />
+<link rel="shortcut icon" href="/assets/img/favicon-32x32.png">
+
+<!-- RSS Feed -->
+<link href="/feed.rss" rel="alternate" type="application/rss+xml" title="{{site.name}} RSS Feed" />
+
+<!-- Prefetching -->
+{% include html/prefetch.html %}
