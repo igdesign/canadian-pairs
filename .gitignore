@@ -5,3 +5,4 @@ node_modules
 _archive
 _build
 tmp
+*.sketch*
