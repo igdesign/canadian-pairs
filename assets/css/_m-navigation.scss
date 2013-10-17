@@ -1,0 +1,228 @@
+/*
+//
+// !Main Site Navigation List positioning
+// ================
+.main-site-navigation {
+  .__nav-parent {
+    position: relative;
+
+    .__nav-list {
+      position: absolute;
+      left: -999em;
+      z-index: 2;
+    }
+
+    .__nav-item {
+      display: block;
+      width: 100%;
+    }
+  }
+
+  // expanded state
+  .__nav-parent.sfHover {
+
+    // show child list
+    & > .__nav-list {
+      left: auto;
+      top: 100%;
+    }
+
+    // child of child list
+    .__nav-parent {
+      .__nav-list {
+        position: absolute;
+        left: -999em;
+      }
+
+      // show child of child list
+      &.sfHover {
+        & > .__nav-list {
+          left: 100%;
+          top: 0;
+        }
+      }
+    }
+  }
+}
+*/
+
+//
+// !Main Site Navigation
+// =====================
+
+.main-site-navigation-handler {
+  display: none;
+}
+
+.main-site-navigation-handler-label {
+  display: none;
+}
+
+.main-site-navigation {
+  @extend %box-sizing;
+
+  .section-heading {
+    @include hide(off-screen);
+  }
+
+  .__nav-list {
+    @extend %list-style-none;
+    @extend %box-sizing;
+  }
+
+  .__nav-item {
+    display: inline-block;
+
+    @include breakpoint($bp3, max-width) {
+      display: inherit;
+    }
+  }
+
+  a {
+    display: block;
+    text-decoration: none;
+    color: $darkneutralcolor;
+    text-transform: capitalize;
+    padding: 0 ($horizontal-gutter / 4);
+  }
+}
+
+/*
+.main-site-navigation {
+  @include font-size(14px, 1.6em);
+  background-color: $white;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.06);
+  display: block;
+
+  .__nav-list {
+    @extend %list-style-none;
+  }
+
+  .__nav-item {
+    min-height: 3.2em;
+    display: table-cell;
+    width:   1%;
+    text-align: center;
+    vertical-align: middle;
+
+    a {
+      display: block;
+      text-decoration: none;
+      color: $darkneutralcolor;
+      text-transform: capitalize;
+      padding: 0 ($horizontal-gutter / 4);
+    }
+
+    &.active {
+      a {
+        color: $primarycolor;
+      }
+    }
+  }
+
+  .__nav-parent.sfHover {
+    background-color: $lightneutralcolor;
+    text-shadow: 0 1px 0 $white;
+
+    a {
+      color: darken($darkneutralcolor, 20%);
+    }
+  }
+
+  .__nav-list {
+    .__nav-list {
+      padding: ($vertical-gutter / 4) 0;
+      background-color: $white;
+      border: 1px solid $neutralcolor;
+      margin-top: 2px;
+      box-shadow: 0 3px 7px rgba(0,0,0,0.2);
+      text-align: left;
+
+      .__nav-item {
+        min-height: 0;
+      }
+
+      a {
+        line-height: 1.8em;
+        color: $black;
+        text-align: left;
+        padding: 0 ($horizontal-gutter / 2);
+      }
+
+      // arrows
+      &:after,
+      &:before {
+      	bottom: 100%;
+      	border: solid transparent;
+      	content: " ";
+      	height: 0;
+      	width: 0;
+      	position: absolute;
+      	left: 5px;
+      	pointer-events: none;
+      }
+
+      &:after {
+      	border-bottom-color: $white;
+      	border-width: 5px;
+      	margin-left: 0;
+      }
+
+      &:before {
+      	border-bottom-color: $neutralcolor;
+      	border-width: 6px;
+      	margin-left: -1px;
+      }
+
+      .__nav-list {
+      	background: #ffffff;
+      	border: 1px solid $neutralcolor;
+        margin-left: 10px;
+
+        &:after,
+        &:before {
+        	left: (($horizontal-gutter / 2) - 2) * -1 ; // menu padding - border width
+        	border: solid transparent;
+        	content: " ";
+        	height: 0;
+        	width: 0;
+        	position: absolute;
+        	pointer-events: none;
+        }
+
+        &:after {
+        	border-right-color: $white;
+        	border-width: 5px;
+        	top: 5px;
+        }
+
+        &:before {
+        	border-right-color: $neutralcolor;
+        	border-width: 6px;
+        	top: 5px;
+        	margin-top: -1px;
+        	margin-left: -2px;
+        }
+      }
+    }
+  }
+}
+
+//
+// !Footer Navigation
+// ==================
+.footer-nav {
+  .__nav-list {
+    @extend %list-style-none;
+  }
+
+  .__nav-item {
+    display: inline;
+
+    a {
+      color: $black;
+      font-weight: 200;
+    }
+  }
+}
+*/

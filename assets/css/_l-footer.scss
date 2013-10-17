@@ -1,0 +1,24 @@
+/**
+ * Footer
+ */
+.footer {
+  @include font-size($small);
+  background-color: $neutralcolor;
+  border-top: 2px solid $darkneutralcolor;
+  text-align: center;
+
+  // twitter icon
+  &:before {
+    content: '';
+    width: 32px;
+    height: 32px;
+    display: block;
+    background-color: $neutralcolor;
+    margin: 0 auto;
+    margin-top: -18px;
+    border-radius: 50%;
+    background-image: url(../img/svg/twitter.svg);
+    background-size: contain;
+    border: 2px solid $darkneutralcolor;
+  }
+}

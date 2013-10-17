@@ -1,16 +1,17 @@
 /*--------------------*\
   General
 \*--------------------*/
+html {
+  background-color: $neutralcolor;
+}
 
 
+body {
+  -webkit-tap-highlight-color: $tapcolor;
+  background-color: $white;
+}
 
 a {
-  text-decoration: none;
-  color: $linkcolor;
-
-  &:visited { color: $linkcolorvisited; }
-  &:hover, &:focus, &:active { color: $linkcolorhover; }
-
   // a[href$=".mp3"] {} attribute type selector
 }
 
@@ -28,7 +29,8 @@ h3,
 h4,
 h5,
 h6,
-p {
+p,
+a {
   font-weight: 200;
 }
 
@@ -53,20 +55,18 @@ button {
 }
 
 p {
-  padding: 0 ($horizontal-gutter / 2) 1em;
+  padding: 0;
 }
 
 acronym {
 	text-transform: uppercase;
 }
 
-
 /* Nested `list-style` types for ordered lists */
 ol          { list-style: decimal; }
 ol ol       { list-style: upper-alpha; }
 ol ol ol    { list-style: lower-roman; }
 ol ol ol ol { list-style: lower-alpha; }
-
 
 p,
 table,

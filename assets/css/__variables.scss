@@ -35,43 +35,29 @@ $h1   : 2em;
 /*--------------------*\
   Colors
 \*--------------------*/
-$primarycolor 					: #000; //#d35400;
-$secondarycolor 				: #000; //#f39c12;
+$primarycolor 					: #1f978c;
+$secondarycolor 				: #1c2d5a;
 
-$neutralcolor 					: #ddd; //#2c3e50;
-$darkneutralcolor 			: darken($neutralcolor,20%);
-$lightneutralcolor 			: lighten($neutralcolor, 20%);
+$neutralcolor 					: #cccccc;
+$darkneutralcolor 			: darken($neutralcolor,30%);
+$lightneutralcolor 			: lighten($neutralcolor, 10%);
 
 $black 							    : #000;
 $white 							    : #fff;
 
 $textcolor              : #000;
-$fadedtextcolor         : lighten($textcolor, 50%);
+$fadedtextcolor         : rgba(0,0,0,0.5);
 
-$tapcolor               : #ff0000;
-$selectioncolor         : #ff0000;
-$inactiveselectioncolor : #ff0000;
+$tapcolor               : transparentize($primarycolor, .7);
+$selectioncolor         : transparentize($primarycolor, .7);
+$inactiveselectioncolor : transparentize($black, .85);
 
 $linkcolor 		    			: $primarycolor;
-$linkcolorhover 				: $secondarycolor;
-$linkcolorvisited   		: darken($linkcolorhover, 10%);
+$linkcolorhover 				: $primarycolor;
+$linkcolorvisited   		: $secondarycolor;
 
-$alertcolor 					: rgb(218,79,73);
-$errorcolor 					: rgb(176,20,0);
-$infocolor 						: rgb(216,220,162);
-$inversecolor 				: rgb(65,65,65);
-$successcolor 				: rgb(188,212,222);
-$warningcolor 				: $errorcolor;
-
-// deprecated
-$lighterneutralcolor 		: #ff0000;
-$lightestneutralcolor 	: #ff0000;
-$midneutralcolor        : #ff0000;
-
-$homecolor:    #A0D468;
-$aboutcolor:   #FC6E51;
-$artistcolor:  #5D9CEC;
-$newscolor:    #656D78;
-$tagcolor:     #FFCE54;
-$privacycolor: #48CFAD;
-$termscolor:   #EC87C0;
+$alertcolor 					: #e67e22;
+$errorcolor 					: #e74c3c;
+$infocolor 						: #f1c40f;
+$successcolor 				: #2ecc71;
+$warningcolor 				: #e67e22;
