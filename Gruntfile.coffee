@@ -3,6 +3,55 @@ module.exports = (grunt) ->
   # Project configuration.
   grunt.initConfig
 
+    shell:
+      dev:
+        command: 'rm -rf _build; rm -rf tmp; mkdir tmp;'
+
+    jekyll:
+      config: '_config.yml'
+
+    sass:
+      options:
+        precision: 3
+      build:
+        files:
+          'tmp/css/style.css': 'assets/css/style.scss'
+
+    autoprefixer:
+      options:
+        browsers: ['last 2 version', 'ie 8', '> 1%']
+      build:
+        expand: true
+        flatten: true
+        src: 'tmp/css/**/*.css'
+        dest: 'tmp/css/'
+
+    cssmin:
+      build:
+        options:
+          report: 'gzip'
+        files:
+          'tmp/css/style.css': 'tmp/css/style.css'
+
+    coffee:
+      build:
+        expand: true
+        flatten: true
+        cwd: 'assets/js'
+        src: '**/*.coffee'
+        dest: 'tmp/js/'
+        ext: '.js'
+
+    uglify:
+      options:
+        report: 'gzip'
+      build:
+        expand: true
+        flatten: true
+        cwd: 'tmp/js/'
+        src: '**/*.js'
+        dest: '_build/assets/js/'
+
     htmlmin:
       dist:
         options:
@@ -14,37 +63,40 @@ module.exports = (grunt) ->
           removeEmptyAttributes: true
           removeOptionalTags: true
         expand: true
-        src: ['**/*.html', '!node_modules/**/*.html', '!_build/**/*.html']
-        dest: '_build/'
+        src: ['_build/**/*.html']
+        dest: ''
 
-    shell:
-      dev:
-        command: 'rm -rf _build; rm -rf tmp; mkdir tmp;'
-
-    jekyll:
-      config: '_config.yml'
-
-    sass:
-      options:
-        precision: 3
-      dev:
-        files:
-          'tmp/css/style.css': 'assets/css/style.scss'
-
-    autoprefixer:
-      options:
-        browsers: ['last 2 version', 'ie 8', '> 1%']
-      dev:
-        src: 'tmp/css/style.css'
-        dest: '_build/assets/css/style.css'
-
-    coffee:
-      dev:
-        expand: true,
-        cwd: 'assets/js'
-        src: ['*.coffee']
-        dest: '_build/assets/js/',
-        ext: '.js'
+    copy:
+      images:
+        expand: true
+        flatten: true
+        cwd: 'assets/img/'
+        src: ['**/*.png', '**/*.svg', '**/*.jpg']
+        dest: 'tmp/img/'
+      images_dev:
+        expand: true
+        flatten: true
+        cwd: 'tmp/img/'
+        src: '**/*.*'
+        dest: '_build/assets/img/'
+      css:
+        expand: true
+        flatten: true
+        cwd: 'tmp/css/'
+        src: '**/*.css'
+        dest: '_build/assets/css/'
+      js:
+        expand: true
+        flatten: true
+        cwd: 'assets/js/'
+        src: '**/*.js'
+        dest: 'tmp/js/'
+      js_dev:
+        expand: true
+        flatten: true
+        cwd: 'tmp/js/'
+        src: '**/*.js'
+        dest: '_build/assets/js/'
 
     connect:
       dev:
@@ -53,27 +105,22 @@ module.exports = (grunt) ->
           base: '_build'
           livereload: true
 
-    copy:
-      images:
-        src: 'assets/img/**/*'
-        dest: '_build/assets/img/'
-
     watch:
       coffee:
-        files: '**/*.coffee'
-        tasks: ['coffee']
+        files: ['assets/js/**/*.coffee', 'assets/js/**/*.js']
+        tasks: 'js:dev'
       sass:
-        files: '**/*.scss'
-        tasks: ['sass:dev', 'autoprefixer:dev']
+        files: 'assets/css/**/*.scss'
+        tasks: 'css:dev'
       html:
-        files: '**/*.html'
-        tasks: ['jekyll-build']
+        files: ['**/*.html', '!_build/**/*.html']
+        tasks: 'default'
       markdown:
         files: '**/*.md'
-        tasks: ['jekyll-build']
+        tasks: 'default'
       images:
-        files: 'assets/img/**/*.*'
-        tasks: ['copy:images']
+        files: ['assets/img/**/*.png', 'assets/img/**/*.jpg', 'assets/img/**/*.svg']
+        tasks: 'media:dev'
       livereload:
         options:
           livereload: true
@@ -84,14 +131,20 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks 'grunt-contrib-coffee'
   grunt.loadNpmTasks 'grunt-contrib-connect'
   grunt.loadNpmTasks 'grunt-contrib-copy'
-# grunt.loadNpmTasks 'grunt-contrib-cssmin'
+  grunt.loadNpmTasks 'grunt-contrib-cssmin'
   grunt.loadNpmTasks 'grunt-contrib-htmlmin'
   grunt.loadNpmTasks 'grunt-contrib-sass'
+  grunt.loadNpmTasks 'grunt-contrib-uglify'
   grunt.loadNpmTasks 'grunt-contrib-watch'
   grunt.loadNpmTasks 'grunt-jekyll'
   grunt.loadNpmTasks 'grunt-shell'
 
   # Default task.
-  grunt.registerTask 'default', ['shell:dev', 'jekyll', 'sass:dev', 'autoprefixer:dev', 'coffee:dev', 'connect', 'watch']
+  grunt.registerTask 'default', ['shell:dev', 'jekyll', 'css:dev', 'js:dev', 'media:dev', 'connect', 'watch']
+  grunt.registerTask 'dist', ['shell:dev', 'jekyll', 'css:dist', 'js:dist', 'htmlmin', 'media:dev', 'connect', 'watch']
 
-  grunt.registerTask 'jekyll-build', ['shell:dev', 'jekyll', 'sass:dev', 'autoprefixer:dev', 'coffee:dev']
+  grunt.registerTask 'css:dev', ['sass', 'autoprefixer', 'copy:css']
+  grunt.registerTask 'css:dist', ['sass', 'autoprefixer', 'cssmin', 'copy:css']
+  grunt.registerTask 'js:dev', ['coffee', 'copy:js', 'copy:js_dev']
+  grunt.registerTask 'js:dist', ['coffee', 'copy:js', 'uglify']
+  grunt.registerTask 'media:dev', ['copy:images', 'copy:images_dev']
