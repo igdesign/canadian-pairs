@@ -2,7 +2,7 @@ markdown: rdiscount
 safe: false
 lsi: false
 pygments: true
-exclude: ['node_modules', 'Gruntfile.coffee', 'package.json', 'params.json', 'README.md', '_archive', 'assets/css', 'assets/js', 'tmp']
+exclude: ['node_modules', 'Gruntfile.coffee', 'package.json', 'params.json', 'README.md', 'assets', 'tmp']
 
 destination: _build
 
