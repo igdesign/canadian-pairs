@@ -1,17 +1,36 @@
 //
-// !Main Site Navigation - Mobile
-// ==============================
-.main-site-navigation-handler {
-  display: none;
-}
-
+// !Main Site Navigation - Handler
+// ===============================
+.main-site-navigation-handler { display: none; }
 .main-site-navigation-handler-label {
   display: none;
+  position: absolute;
+  text-align: center;
+  z-index: 1;
+
+  &:hover {
+    cursor: pointer;
+  }
 }
 
+//
+// !Main Site Navigation - Global
+// ==============================
 .main-site-navigation {
-  @extend %box-sizing;
-  @include font-size($base);
+  .__nav-list {
+    @extend %list-style-none;
+  }
+
+  a {
+    text-decoration: none;
+    text-transform: capitalize;
+  }
+}
+
+//
+// !Main Site Navigation - Mobile
+// ==============================
+.main-site-navigation {
   background-color: $secondarycolor;
 
   .section-heading {
@@ -20,18 +39,9 @@
     color: $white;
   }
 
-  .__nav-list {
-    @extend %list-style-none;
-    @extend %box-sizing;
-  }
-
   .__nav-item {
 
-    @include breakpoint($bp3, max-width) {
-      display: block;
-    }
-
-    &.active {
+    &.is-active {
       a {
         background-color: $primarycolor;
         color: $white;
@@ -42,11 +52,10 @@
     }
   }
 
+
   a {
     display: block;
-    text-decoration: none;
     color: $white;
-    text-transform: capitalize;
     padding: 0 ($horizontal-gutter / 4);
     border-bottom: 1px solid darken($secondarycolor, 10%);
     border-top: 1px solid lighten($secondarycolor, 10%);
@@ -76,7 +85,7 @@
   }
 
   // expanded state
-  .__nav-parent.sfHover {
+  .__nav-parent.is-expanded {
     background-color: lighten($secondarycolor, 5%);
 
     // show child list
@@ -98,6 +107,9 @@
 // =================================
 @include breakpoint($bp4, min-width) {
 
+  //
+  // !Drop downs
+  // ===========
   .main-site-navigation {
     .__nav-parent {
       position: relative;
@@ -116,35 +128,33 @@
       }
     }
 
-    // expanded state
-    .__nav-parent.sfHover, .__nav-parent:hover {
-      padding-left: 0;
 
+    // expanded state
+    .__nav-parent.is-expanded,
+    .__nav-parent:hover {
       // show child list
       & > .__nav-list {
         left: auto;
         top: 100%;
+        padding-left: 0;
       }
 
       // child of child list
       .__nav-parent {
         .__nav-list {
-            position: absolute;
-            left: -999em;
+          position: absolute;
+          left: -999em;
         }
 
         // show child of child list
-        &.sfHover, &:hover {
+        &.is-expanded,
+        &:hover {
           & > .__nav-list {
             left: 100%;
             margin-left: 0;
             top: 0;
           }
         }
-      }
-
-      a {
-        border-left: none;
       }
     }
   }
@@ -153,73 +163,82 @@
   .main-site-navigation {
     background-color: $white;
     box-shadow: 0 3px 10px rgba(0,0,0,0.06);
-    display: block;
-    min-height: 3.2em;
 
     .section-heading {
       @include hide(off-screen);
     }
 
     .__nav-item {
-
       display: table-cell;
       width: 1%;
       text-align: center;
       vertical-align: middle;
 
-      a {
-        border: none;
-        color: $black;
-        padding: 0;
-      }
-
-      &.active a {
+      &.is-active a {
         background-color: $white;
         color: $primarycolor;
       }
-    }
 
-    .__nav-parent.sfHover, .__nav-parent:hover {
-      background-color: $lightneutralcolor;
-      text-shadow: 0 1px 0 $white;
+      &.is-active:hover a {
+        background-color: $lightneutralcolor;
+      }
+
+      &:hover {
+        background-color: $lightneutralcolor;
+      }
 
       a {
-        color: darken($darkneutralcolor, 20%);
+        border: none;
+        color: $black;
+        padding: 0 ($horizontal-gutter / 2);
+        text-shadow: 0 1px 0 $white;
       }
     }
 
-    .__nav-parent.sfHover .__nav-list, .__nav-parent:hover .__nav-list{
-      background-color: $white;
+    // top level list
+    .__nav-parent.is-expanded,
+    .__nav-parent:hover {
+      background-color: $lightneutralcolor;
 
-      a {
-        background-color: $white;
-        border: none;
-
-        &:hover {
-          background-color: $lightneutralcolor ;
+      // sub list
+      .__nav-parent.is-expanded,
+      .__nav-parent:hover {
+        & > a {
+          color: $primarycolor;
         }
       }
     }
 
+    .__nav-parent.is-expanded,
+    .__nav-parent:hover {
+
+      & .__nav-list {
+        background-color: $white;
+
+        a {
+          background-color: $white;
+          border: none;
+
+          &:hover {
+            background-color: $lightneutralcolor;
+          }
+        }
+      }
+    }
+
+    // Top List
     .__nav-list {
 
+      // Sub List
       .__nav-list {
         padding: ($vertical-gutter / 4) 0;
         border: 1px solid $neutralcolor;
         margin-top: 2px;
         box-shadow: 0 3px 7px rgba(0,0,0,0.2);
-        text-align: left;
-        width: 10em;
-
-        .__nav-item {
-          min-height: 0;
-        }
+        white-space: nowrap;
 
         a {
-          line-height: 1.8em;
-          color: $black;
           text-align: left;
-          padding: 0 ($horizontal-gutter / 2);
         }
 
         // arrows
@@ -300,16 +319,7 @@
   }
 
   .main-site-navigation-handler-label {
-    position: absolute;
     display: inline;
-    text-align: center;
-    z-index: 1;
-    background-color: red;
-    border: 1px solid orange;
-
-    &:hover {
-      cursor: pointer;
-    }
   }
 
   .main-site-navigation-handler:checked {
@@ -339,4 +349,12 @@
       font-weight: 200;
     }
   }
+}
+
+.main-site-navigation {
+  left: 0;
+}
+
+.main-site-navigation-handler-label {
+  left: $navMenuWidth;
 }
