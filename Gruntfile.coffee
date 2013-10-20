@@ -16,6 +16,7 @@ module.exports = (grunt) ->
       build:
         files:
           'tmp/css/style.css': 'assets/css/style.scss'
+          'tmp/css/style-old-ie.css': 'assets/css/style-old-ie.scss'
 
     autoprefixer:
       options:
@@ -98,6 +99,15 @@ module.exports = (grunt) ->
         src: '**/*.js'
         dest: '_build/assets/js/'
 
+    compress:
+      dist:
+        options:
+          mode: 'gzip'
+        expand: true
+        cwd: '_build/'
+        src: '**/*'
+        dest: '_dist/'
+
     connect:
       dev:
         options:
@@ -129,6 +139,7 @@ module.exports = (grunt) ->
   # These plugins provide necessary tasks.
   grunt.loadNpmTasks 'grunt-autoprefixer'
   grunt.loadNpmTasks 'grunt-contrib-coffee'
+  grunt.loadNpmTasks 'grunt-contrib-compress'
   grunt.loadNpmTasks 'grunt-contrib-connect'
   grunt.loadNpmTasks 'grunt-contrib-copy'
   grunt.loadNpmTasks 'grunt-contrib-cssmin'
@@ -142,6 +153,7 @@ module.exports = (grunt) ->
   # Default task.
   grunt.registerTask 'default', ['shell:dev', 'jekyll', 'css:dev', 'js:dev', 'media:dev', 'connect', 'watch']
   grunt.registerTask 'dist', ['shell:dev', 'jekyll', 'css:dist', 'js:dist', 'htmlmin', 'media:dev', 'connect', 'watch']
+  grunt.registerTask 'fin', ['shell:dev', 'jekyll', 'css:dist', 'js:dist', 'htmlmin', 'media:dev', 'compress']
 
   grunt.registerTask 'css:dev', ['sass', 'autoprefixer', 'copy:css']
   grunt.registerTask 'css:dist', ['sass', 'autoprefixer', 'cssmin', 'copy:css']
