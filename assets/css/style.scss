@@ -25,13 +25,26 @@
 
 // Styles
 // ------
-@import "1-base";
-@import "2-general";
-@import "3-layout";
-@import "4-modules";
-@import "5-pages";
-@import "6-theme";
-@import "7-print";
+@import "base";
+@import "elements";
+
+// Modules
+@import "modules/m-navigation";
+@import "modules/m-site-logo";
+@import "modules/m-company";
+@import "modules/m-contact";
+
+// Blocks
+@import "blocks"; // Layout
+@import "blocks/b-header";
+@import "blocks/b-colophon";
+@import "blocks/b-footer";
+
+// Pages
+// @import "pages/specific-page-class"; // target specific page
+
+// Helpers
+@import "print";
 
 @include bp-helper;
-//@import "_themer";
+// @import "_themer";

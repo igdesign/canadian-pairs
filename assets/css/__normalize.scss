@@ -47,9 +47,11 @@ audio:not([controls]) {
  * Address styling not present in IE 8/9.
  */
 
+/*
 [hidden] {
     display: none;
 }
+*/
 
 /* ==========================================================================
    Base
@@ -64,17 +66,19 @@ audio:not([controls]) {
  */
 
 a:focus {
-    outline: thin dotted;
+  outline: thin dotted;
 }
 
 /**
  * Improve readability when focused and also mouse hovered in all browsers.
  */
 
+/*
 a:active,
 a:hover {
-    outline: 0;
+  outline: 0;
 }
+*/
 
 /* ==========================================================================
    Typography
