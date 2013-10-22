@@ -34,7 +34,13 @@ module.exports = (grunt) ->
         files:
           'tmp/css/style.css': 'tmp/css/style.css'
 
+    csslint:
+      build:
+        src: 'tmp/css/style.css'
+
     coffee:
+      options:
+        sourceMap: true
       build:
         expand: true
         flatten: true
@@ -96,7 +102,7 @@ module.exports = (grunt) ->
         expand: true
         flatten: true
         cwd: 'tmp/js/'
-        src: '**/*.js'
+        src: ['**/*.js', '**/*.js.map']
         dest: '_build/assets/js/'
 
     compress:
@@ -142,6 +148,7 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks 'grunt-contrib-compress'
   grunt.loadNpmTasks 'grunt-contrib-connect'
   grunt.loadNpmTasks 'grunt-contrib-copy'
+  grunt.loadNpmTasks 'grunt-contrib-csslint'
   grunt.loadNpmTasks 'grunt-contrib-cssmin'
   grunt.loadNpmTasks 'grunt-contrib-htmlmin'
   grunt.loadNpmTasks 'grunt-contrib-sass'
