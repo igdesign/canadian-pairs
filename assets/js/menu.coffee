@@ -1,12 +1,51 @@
-this.clickHandler = ->
-  event.preventDefault();
-
+# Global Variables
 menuParents = document.getElementsByClassName('__nav-parent')
-menuParent = null;
+selected = null
+prevSelected = null
 
-for i in [0..menuParents.length - 1] by 1
-  link = (menuParents[i].firstElementChild||menuParents[i].firstChild)
-  link.addEventListener "click", (event) => this.clickHandler(event)
+# getParent
+# Recursive selector
+this.getParent = (el, tag) ->
+  while el.parentNode
+    el = el.parentNode
 
-  (menuParents[i].firstElementChild||menuParents[i].firstChild).addEventListener "click", () ->
-    this.parentNode.classList.toggle('is-expanded')
+    if el.tagName is tag
+      if el.classList.contains('__nav-parent')
+        el.classList.add('is-expanded')
+
+  return null
+
+# clickHandler
+# detect clicks and process
+this.clickHandler = ->
+  event.preventDefault()
+  this.focusIn(event)
+
+# focusIn
+# main focus function
+# controls events
+this.focusIn = (event) ->
+
+  # Focused Element
+  element = event.srcElement
+
+  if element.parentNode.classList.contains('is-expanded')
+    #console.log('has is-expanded')
+    element.parentNode.classList.remove('is-expanded')
+    return
+
+  # find all expanded menus
+  for expanded in menuParents when expanded.classList.contains('is-expanded')
+    # remove expanded class
+    expanded.classList.remove('is-expanded')
+
+  # send to recursive expander
+  this.getParent(element, "LI")
+
+
+# Focus
+document.addEventListener "focusin", (event) => this.focusIn(event)
+
+# Click
+for menuItem in menuParents
+  menuItem.firstElementChild.addEventListener "click", (event) => this.clickHandler(event)
