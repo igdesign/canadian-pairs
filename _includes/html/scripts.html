@@ -1,12 +1,21 @@
-<script src="assets/js/fastclick.js"></script>
+<!-- Modernizr / Yepnope -->
+<script>
+  yepnope([{
+    test: Modernizr.classlist,
+    nope: '/assets/js/polyfills/classList.min.js'
+  },{
+    test: Modernizr.mq,
+    nope: '/assets/js/polyfills/respond.min.js'
+  }])
+</script>
+
+<!-- FastClick -->
+<script src="/assets/js/fastclick.js"></script>
 <script>
   window.addEventListener('load', function() {
     FastClick.attach(document.body);
     }, false);
 </script>
-<script src="assets/js/menu.js"></script>
 
-
-<!--[if gte IE 8]>
-<script src="assets/js/classList.min.js"></script>
-<![endif]-->
+<!-- Menu -->
+<script src="/assets/js/menu.js"></script>
