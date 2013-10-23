@@ -29,10 +29,13 @@
 @import "elements";
 
 // Modules
-@import "modules/m-navigation";
-@import "modules/m-site-logo";
 @import "modules/m-company";
 @import "modules/m-contact";
+@import "modules/m-navigation";
+@import "modules/m-navigation-main-site-nav";
+@import "modules/m-navigation-footer-nav";
+@import "modules/m-site-logo";
+@import "modules/m-twitter";
 
 // Blocks
 @import "blocks"; // Layout
