@@ -13,6 +13,8 @@ module.exports = (grunt) ->
     sass:
       options:
         precision: 3
+        sourcemap: true
+        noCache: true
       build:
         files:
           'tmp/css/style.css': 'assets/css/style.scss'
@@ -73,16 +75,30 @@ module.exports = (grunt) ->
         src: ['_build/**/*.html']
         dest: ''
 
+    imagemin:
+      options:
+        pngquant: true
+      dist:
+        expand: true
+        cwd: 'assets/img/'
+        src: '**/*.{png,jpg,gif}'
+        dest: 'tmp/img/'
+
     copy:
+      svg:
+        expand: true
+        cwd: 'assets/img/'
+        src: '**/*.svg'
+        dest: 'tmp/img/'
       images:
         expand: true
-        flatten: true
+#         flatten: true
         cwd: 'assets/img/'
-        src: ['**/*.png', '**/*.svg', '**/*.jpg']
+        src: ['**/*.png', '**/*.svg', '**/*.jpg', '**/*.gif']
         dest: 'tmp/img/'
       images_dev:
         expand: true
-        flatten: true
+#         flatten: true
         cwd: 'tmp/img/'
         src: '**/*.*'
         dest: '_build/assets/img/'
@@ -90,29 +106,20 @@ module.exports = (grunt) ->
         expand: true
         flatten: true
         cwd: 'tmp/css/'
-        src: '**/*.css'
+        src: ['**/*.css', '**/*.map']
         dest: '_build/assets/css/'
       js:
         expand: true
-        flatten: true
+#         flatten: true
         cwd: 'assets/js/'
         src: '**/*.js'
         dest: 'tmp/js/'
       js_dev:
         expand: true
-        flatten: true
+#         flatten: true
         cwd: 'tmp/js/'
         src: ['**/*.js', '**/*.js.map']
         dest: '_build/assets/js/'
-
-    compress:
-      dist:
-        options:
-          mode: 'gzip'
-        expand: true
-        cwd: '_build/'
-        src: '**/*'
-        dest: '_dist/'
 
     connect:
       dev:
@@ -151,6 +158,7 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks 'grunt-contrib-csslint'
   grunt.loadNpmTasks 'grunt-contrib-cssmin'
   grunt.loadNpmTasks 'grunt-contrib-htmlmin'
+  grunt.loadNpmTasks 'grunt-contrib-imagemin'
   grunt.loadNpmTasks 'grunt-contrib-sass'
   grunt.loadNpmTasks 'grunt-contrib-uglify'
   grunt.loadNpmTasks 'grunt-contrib-watch'
@@ -159,11 +167,11 @@ module.exports = (grunt) ->
 
   # Default task.
   grunt.registerTask 'default', ['shell:dev', 'jekyll', 'css:dev', 'js:dev', 'media:dev', 'connect', 'watch']
-  grunt.registerTask 'dist', ['shell:dev', 'jekyll', 'css:dist', 'js:dist', 'htmlmin', 'media:dev', 'connect', 'watch']
-  grunt.registerTask 'fin', ['shell:dev', 'jekyll', 'css:dist', 'js:dist', 'htmlmin', 'media:dev', 'compress']
+  grunt.registerTask 'dist',    ['shell:dev', 'jekyll', 'css:dist', 'js:dist', 'htmlmin', 'media:dist', 'connect', 'watch']
 
-  grunt.registerTask 'css:dev', ['sass', 'autoprefixer', 'copy:css']
-  grunt.registerTask 'css:dist', ['sass', 'autoprefixer', 'cssmin', 'copy:css']
-  grunt.registerTask 'js:dev', ['coffee', 'copy:js', 'copy:js_dev']
-  grunt.registerTask 'js:dist', ['coffee', 'copy:js', 'uglify']
-  grunt.registerTask 'media:dev', ['copy:images', 'copy:images_dev']
+  grunt.registerTask 'css:dev',    ['sass', 'autoprefixer', 'copy:css']
+  grunt.registerTask 'css:dist',   ['sass', 'autoprefixer', 'cssmin', 'copy:css']
+  grunt.registerTask 'js:dev',     ['coffee', 'copy:js', 'copy:js_dev']
+  grunt.registerTask 'js:dist',    ['coffee', 'copy:js', 'uglify']
+  grunt.registerTask 'media:dev',  ['copy:images', 'copy:images_dev']
+  grunt.registerTask 'media:dist', ['imagemin:dist', 'copy:svg', 'copy:images_dev']
