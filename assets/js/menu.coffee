@@ -1,7 +1,5 @@
 # Global Variables
-menuParents = document.getElementsByClassName('__nav-parent')
-selected = null
-prevSelected = null
+menuParents = document.getElementsByClassName('is-parent')
 
 # getParent
 # Recursive selector
@@ -10,7 +8,7 @@ this.getParent = (el, tag) ->
     el = el.parentNode
 
     if el.tagName is tag
-      if el.classList.contains('__nav-parent')
+      if el.classList.contains('is-parent')
         el.classList.add('is-expanded')
 
   return null
@@ -25,7 +23,6 @@ this.clickHandler = ->
 # main focus function
 # controls events
 this.focusIn = (event) ->
-
   # Focused Element
   element = event.srcElement
 
