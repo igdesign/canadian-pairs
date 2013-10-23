@@ -8,15 +8,19 @@
   <div class="page-wrapper">
 
     <!-- Menu Collapse Handler -->
-    <input type="checkbox" name="handler" id="handler" class="main-site-navigation-handler" onclick="null" />
-    <label for="handler" class="main-site-navigation-handler-label" href="#">Menu</label>
+    <input type="checkbox" name="main-site-nav__handler" id="main-site-nav__handler" class="main-site-nav__handler" onclick="null" />
+    <label for="main-site-nav__handler" class="main-site-nav__handler__label" href="#" aria-label="Toggle Navigation">
+      <span class="lines"></span>
+    </label>
 
 
     {% include elements/nav.html %}
 
     {% include elements/header.html %}
 
-    {{content}}
+    <div class="main">
+      {{content}}
+    </div>
 
     {% include elements/colophon.html %}
 

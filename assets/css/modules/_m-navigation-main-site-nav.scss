@@ -1,0 +1,353 @@
+/*
+ * !Main Site Navigation - Utilities
+ */
+.main-site-nav__handler {
+  display: none;
+  }
+  .main-site-nav__handler__label {
+    display: none;
+    position: absolute;
+    text-align: center;
+    z-index: 100;
+    }
+    .main-site-nav__handler__label:hover {
+      cursor: pointer;
+      }
+
+@include breakpoint($bp4, max-width) {
+
+.main-site-nav {
+  position: fixed;
+  top: 0;
+  left: -$navMenuWidth;
+  bottom: 0;
+  width: $navMenuWidth;
+  z-index: 3;
+  overflow: scroll;
+  }
+
+.main-site-nav,
+.main-site-nav__handler__label {
+  transition: left $transitionSpeed ease-in-out;
+  }
+
+.main-site-nav__handler__label {
+  display: inline;
+  }
+
+.main-site-nav__handler:checked ~ .main-site-nav {
+  left: 0;
+  }
+
+.main-site-nav__handler:checked ~ .main-site-nav__handler__label {
+  left: $navMenuWidth;
+  }
+
+// end breakpoint
+}
+
+
+/*
+ * !Main Site Navigation - Base
+ *
+ * default site navigation before media queries
+ * dropdown support enabled using js
+ */
+.main-site-nav {
+  background-color: $secondarycolor;
+}
+.main-site-nav__header {
+  @extend .section__header;
+  @extend %zero;
+  text-align: center;
+  color: $white;
+  }
+.main-site-nav__list {
+  @extend %list-style-none;
+  }
+
+.main-site-nav__list__item {} //root
+  .main-site-nav__list__item.is-expanded {
+    background-color: lighten($secondarycolor, 5%);
+    }
+  .main-site-nav__list__item.is-active {}
+  .main-site-nav__list__item.is-active a {
+    background-color: $primarycolor;
+    border-top-color: lighten($primarycolor, 10%);
+    border-bottom-color: darken($primarycolor, 10%);
+    padding-left: $horizontal-gutter;
+    }
+  .main-site-nav__list__item.is-active a:hover {
+    text-decoration: underline;
+    background-color: $primarycolor;
+    }
+  .main-site-nav__list__item.is-active a:active {
+    border-top-color: darken($secondarycolor, 5);
+    }
+  .main-site-nav__list__item a {
+    text-decoration: none;
+    text-transform: capitalize;
+    display: block;
+    color: $white;
+    padding: ($vertical-gutter / 2) ($horizontal-gutter / 2);
+    border-bottom: 1px solid darken($secondarycolor, 10%);
+    border-top: 1px solid lighten($secondarycolor, 10%);
+    transition: padding $transitionSpeed ease-in-out;
+    }
+  .main-site-nav__list__item a:hover {
+    background-color: lighten($secondarycolor, 5%);
+    }
+
+.main-site-nav__list__item .main-site-nav__list { // level 1
+  background-color: rgba(0,0,0,0.2);
+  background-color: lighten($secondarycolor, 5%);
+  }
+  .main-site-nav__list__item .main-site-nav__list__item a:before {
+    content: '-';
+    margin-right: $horizontal-gutter / 4;
+    }
+  .main-site-nav__list__item .main-site-nav__list__item a:hover {
+    border-top-color: lighten($secondarycolor, 15%);
+    background-color: lighten($secondarycolor, 10%)
+    }
+  .main-site-nav__list__item .main-site-nav__list__item a:active {
+    background-color: darken($secondarycolor, 5%);
+    border-top-color: darken($secondarycolor, 5%);
+    border-bottom-color: lighten($secondarycolor, 5%);
+    }
+
+// positioning
+.main-site-nav__list__item.is-parent {} // root
+.main-site-nav__list__item.is-parent .main-site-nav__list { // level 1
+  height: 0;
+  overflow: hidden;
+  }
+.main-site-nav__list__item.is-expanded .main-site-nav__list { // root expanded
+  height: auto;
+  }
+
+/**
+ * !Main Site Navigation - Full-size
+ *
+ * full size navigation, tablet and large devices
+ * dropdown support using hover, requires media-queries
+ */
+@include breakpoint($bp4, min-width) {
+
+.main-site-nav { // root
+  background-color: $white;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.06);
+  }
+
+.main-site-nav__header { // root
+  @include hide(off-screen);
+  }
+
+.main-site-nav__list {} // root
+.main-site-nav__list__item {
+  display: table-cell;
+  width: 1%;
+  text-align: center;
+  vertical-align: middle;
+  }
+  .main-site-nav__list__item:hover,
+  .main-site-nav__list__item.is-expanded,
+  .main-site-nav__list__item.is-active:hover a {
+    background-color: $lightneutralcolor;
+    }
+  .main-site-nav__list__item.is-active a {
+    background-color: $white;
+    color: $primarycolor;
+    }
+  .main-site-nav__list__item a {
+    border: none;
+    color: $black;
+    padding: 0 ($horizontal-gutter / 2);
+    text-shadow: 0 1px 0 $white;
+    }
+  .main-site-nav__list__item a:hover {
+    background-color: $lightneutralcolor;
+  }
+
+.main-site-nav__list__item .main-site-nav__list { // level 1 / level 2 / etc
+  background-color: $white;
+  padding: ($vertical-gutter / 4) 0;
+  border: 1px solid $neutralcolor;
+  box-shadow: 0 3px 7px rgba(0,0,0,0.2);
+  white-space: nowrap;
+  }
+
+  .main-site-nav__list__item .main-site-nav__list__item {
+    background-color: $white;
+    display: block;
+    width: 100%;
+    }
+    .main-site-nav__list__item .main-site-nav__list__item a:before {
+      content: none;
+      }
+    .main-site-nav__list__item .main-site-nav__list__item.is-expanded > a,
+    .main-site-nav__list__item .main-site-nav__list__item:hover       > a {
+      color: $primarycolor;
+      }
+    .main-site-nav__list__item.is-parent .main-site-nav__list__item a {
+      border: none;
+      text-align: left;
+      }
+    .main-site-nav__list__item .main-site-nav__list__item a:hover {
+      background-color: $lightneutralcolor;
+      }
+
+// POSITIONING
+.main-site-nav__list__item.is-parent { // root
+  position: relative;
+  }
+
+.main-site-nav__list__item.is-parent .main-site-nav__list { // level 1 / level 2 / etc
+  height: auto;
+  overflow: visible;
+  position: absolute;
+  left: -999em;
+  z-index: 2;
+  }
+
+.main-site-nav__list__item.is-expanded > .main-site-nav__list,
+.main-site-nav__list__item:hover       > .main-site-nav__list { // level 1
+  left: auto;
+  top: 100%;
+  padding-left: 0;
+  }
+
+.main-site-nav__list__item.is-expanded .main-site-nav__list__item.is-expanded > .main-site-nav__list,
+.main-site-nav__list__item:hover       .main-site-nav__list__item:hover > .main-site-nav__list { // level 2 / level 3 / etc
+  left: 100%;
+  top: 0;
+  }
+
+
+
+
+
+
+
+
+
+
+
+// decorations
+.main-site-nav__list .main-site-nav__list { // level 1
+  &:after,
+  &:before {
+  	bottom: 100%;
+  	border: solid transparent;
+  	content: " ";
+  	height: 0;
+  	width: 0;
+  	position: absolute;
+  	left: 5px;
+  	pointer-events: none;
+    }
+  &:after {
+  	border-bottom-color: $white;
+  	border-width: 5px;
+  	margin-left: 0;
+    }
+  &:before {
+  	border-bottom-color: $neutralcolor;
+  	border-width: 6px;
+  	margin-left: -1px;
+    }
+}
+.main-site-nav__list .main-site-nav__list .main-site-nav__list {
+  &:after,
+  &:before {
+  	left: (($horizontal-gutter / 2) - 2) * -1 ; // menu padding - border width
+  	border: solid transparent;
+  	content: " ";
+  	height: 0;
+  	width: 0;
+  	position: absolute;
+  	pointer-events: none;
+    }
+  &:after {
+  	border-right-color: $white;
+  	border-width: 5px;
+  	top: 5px;
+    }
+  &:before {
+  	border-right-color: $neutralcolor;
+  	border-width: 6px;
+  	top: 5px;
+  	margin-top: -1px;
+  	margin-left: -2px;
+    }
+}
+
+// end full-size media query
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+//
+// DECORATIONS
+.main-site-nav__handler__label {
+  user-select: none;
+  background-color: $secondarycolor;
+
+  @include proportional(10%);
+}
+
+.lines {
+  //create middle line
+  @include line;
+
+  // centering
+  width: 50%;
+  margin: auto;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  transition: background 0;
+
+  /*create the upper and lower lines as pseudo-elements of the middle line*/
+  &:before, &:after {
+    @include line;
+    position: absolute;
+    left: 0;
+    right: 0;
+    content: '';
+    transform-origin: 50% 50%;
+    transition: top 0, transform 0;
+  }
+  &:before { top: -6px; }
+  &:after { top:   6px; }
+}
+
+.main-site-nav__handler:checked ~ .main-site-nav__handler__label .lines {
+  /*hide the middle line*/
+  background: transparent;
+
+  /*overlay the lines by setting both their top values to 0*/
+  &:before, &:after{
+    top: 0;
+  }
+
+  // rotate the lines to form the x shape
+  &:before{
+    transform: rotate3d(0,0,1,45deg);
+  }
+  &:after{
+    transform: rotate3d(0,0,1,-45deg);
+  }
+}

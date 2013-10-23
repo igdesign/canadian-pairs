@@ -6,19 +6,18 @@
   background-color: $neutralcolor;
   border-top: 2px solid $darkneutralcolor;
   text-align: center;
-
-  // twitter icon
-  &:before {
-    content: '';
-    width: 32px;
-    height: 32px;
-    display: block;
-    background-color: $neutralcolor;
-    margin: 0 auto;
-    margin-top: -18px;
-    border-radius: 50%;
-    background-image: url(../img/twitter.svg);
-    background-size: contain;
-    border: 2px solid $darkneutralcolor;
-  }
 }
+
+.footer--twitter {
+  @extend .twitter;
+  }
+  .footer--twitter a {
+    border: 2px solid $darkneutralcolor;
+    background-color: $neutralcolor;
+    height: 32px;
+    width: 32px;
+    }
+
+.footer__copyright {
+  margin-top: ($vertical-gutter / 2);
+  }

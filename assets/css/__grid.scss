@@ -126,7 +126,8 @@ $breakpoints: (
   'bp3' '(min-width: '+$bp3+')',
   'bp4' '(min-width: '+$bp4+')',
   'bp5' '(min-width: '+$bp5+')',
-  'bp6' '(min-width: '+$bp6+')'
+  'bp6' '(min-width: '+$bp6+')',
+  'bp7' '(min-width: '+$bp7+')'
 )!default;
 
 
@@ -140,7 +141,7 @@ $breakpoints: (
  * Push and pull shall only be used if `$push` and/or `$pull` and `$responsive`
  * have been set to 'true'.
  */
-$breakpoint-has-widths: ('bp1', 'bp2', 'bp3', 'bp4', 'bp5', 'bp6')!default;
+$breakpoint-has-widths: ('bp1', 'bp2', 'bp3', 'bp4', 'bp5', 'bp6', 'bp7')!default;
 $breakpoint-has-push:   ('palm', 'lap', 'portable', 'desk')!default;
 $breakpoint-has-pull:   ('palm', 'lap', 'portable', 'desk')!default;
 
