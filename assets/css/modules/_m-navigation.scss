@@ -1,2 +1,256 @@
+/*
+ * !Navigation - Base
+ *
+ * default site navigation before media queries
+ * dropdown support enabled using js
+ */
+.nav__header {
+  @extend .section__header;
+  @extend %zero;
+
+  text-align: center;
+  color: $white;
+  }
+
+.nav__list {
+  @extend %list-style-none;
+  }
+
+.nav__item {}
+  .nav__item.is-expanded {
+    background-color: lighten($secondarycolor, 5%);
+    }
+  .nav__item.is-active {}
+    .nav__item.is-active a {
+      background-color: $primarycolor;
+      border-top-color: lighten($primarycolor, 10%);
+      border-bottom-color: darken($primarycolor, 10%);
+      padding-left: $horizontal-gutter;
+      }
+    .nav__item.is-active a:hover,
+    .nav__item.is-active a:focus {
+      text-decoration: underline;
+      background-color: $primarycolor;
+      }
+    .nav__item.is-active a:active {
+      border-top-color: darken($secondarycolor, 5);
+      }
+
+  .nav__item a {
+    text-decoration: none;
+    text-transform: capitalize;
+    display: block;
+    color: $white;
+    background-color: $secondarycolor;
+    padding: ($vertical-gutter / 2) ($horizontal-gutter / 2);
+    border-bottom: 1px solid darken($secondarycolor, 10%);
+    border-top: 1px solid lighten($secondarycolor, 10%);
+    transition: padding $transitionSpeed ease-in-out;
+    }
+    .nav__item a:hover {
+      background-color: lighten($secondarycolor, 5%);
+      }
+
+.nav__list .nav__list {
+  background-color: rgba(0,0,0,0.2);
+  background-color: lighten($secondarycolor, 5%);
+  }
+
+  .nav__list .nav__list .nav__item {}
+
+    .nav__list .nav__list .nav__item a {}
+    .nav__list .nav__list .nav__item a:before {
+      content: '';
+      margin-right: $horizontal-gutter / 2;
+      }
+    .nav__list .nav__list .nav__item a:hover,
+    .nav__list .nav__list .nav__item a:focus {
+      border-top-color: lighten($secondarycolor, 15%);
+      background-color: lighten($secondarycolor, 10%)
+      }
+    .nav__list .nav__list .nav__item a:active {
+      background-color: darken($secondarycolor, 5%);
+      border-top-color: darken($secondarycolor, 5%);
+      border-bottom-color: lighten($secondarycolor, 5%);
+      }
+
+.nav__list .nav__list .nav__list .nav__item a:before {
+  margin-left: $horizontal-gutter;
+}
+
+// positioning
+.nav__item {}
+  .nav__item.is-parent {}
+
+    .nav__item.is-parent .nav__list,
+    .nav__item.is-expanded .nav__list .nav__list {
+      height: 0;
+      overflow: hidden;
+      }
+    .nav__item.is-expanded .nav__list,
+    .nav__item.is-expanded .nav__item.is-expanded .nav__list {
+      height: auto;
+      }
+
+/**
+ * !Main Site Navigation - Full-size
+ *
+ * full size navigation, tablet and large devices
+ * dropdown support using hover, requires media-queries
+ */
+@include breakpoint($bp4, min-width) {
+
+.nav a:focus {
+  outline: none;
+}
+
+.nav__header {
+  @include hide(off-screen);
+  }
+
+.nav__list {}
+
+.nav__item {
+  display: table-cell;
+  width: 1%;
+  text-align: center;
+  vertical-align: middle;
+  }
+  .nav__item:hover,
+  .nav__item:hover > a,
+  .nav__item.is-expanded,
+  .nav__item.is-expanded > a,
+  .nav__item.is-active:hover > a,
+  .nav__item:focus,
+  .nav__item:focus > a {
+    background-color: $lightneutralcolor;
+  }
+
+  .nav__item.is-active a:focus {
+    background-color: $white;
+  }
+
+  .nav__item.is-active {}
+  .nav__item.is-active a {
+    background-color: $white;
+    color: $primarycolor;
+    padding-left: $horizontal-gutter / 2;
+    }
+
+  .nav__item a {
+    border: none;
+    color: $black;
+    padding: 0 ($horizontal-gutter / 2);
+    text-shadow: 0 1px 0 $white;
+    background-color: $white;
+    }
+  .nav__item a:hover {
+    background-color: $lightneutralcolor;
+    }
+
+.nav__list .nav__list {
+  background-color: $white;
+  border: 1px solid $neutralcolor;
+  box-shadow: 0 3px 7px rgba(0,0,0,0.2);
+  white-space: nowrap;
+  }
+
+  .nav__list .nav__list .nav__item {
+    background-color: $white;
+    display: block;
+    width: 100%;
+    }
+    .nav__list .nav__list .nav__item.is-expanded {}
+
+    .nav__list .nav__list .nav__item.is-expanded > a,
+    .nav__list .nav__list .nav__item:hover       > a,
+    .nav__list .nav__list .nav__item > a:focus {
+      background-color: $lightneutralcolor;
+    }
+
+    .nav__list .nav__list .nav__item a {
+      border: none;
+      text-align: left;
+      }
+    .nav__list .nav__list .nav__item a:before {
+      content: none;
+      }
+    .nav__list .nav__list .nav__item a:hover {
+      background-color: $lightneutralcolor
+      }
 
 
+// positioning
+.nav__item.is-parent {
+  position: relative;
+  }
+  .nav__item.is-parent .nav__list {
+    height: auto;
+    overflow: visible;
+    position: absolute;
+    left: -999em;
+    z-index: 2;
+    }
+
+.nav__item.is-expanded > .nav__list,
+.nav__item:hover       > .nav__list {
+  left: auto;
+  top: 100%;
+  padding-left: 0;
+  }
+.nav__item.is-expanded .nav__item.is-expanded > .nav__list,
+.nav__item:hover       .nav__item:hover       > .nav__list {
+  left: 100%;
+  top: -1px;
+}
+
+
+
+// Arrow Decorations
+.nav__list .nav__list:after,
+.nav__list .nav__list:before { // level 1
+	bottom: 100%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	left: 5px;
+	pointer-events: none;
+  }
+.nav__list .nav__list:after {
+  border-bottom-color: $white;
+	border-width: 5px;
+	margin-left: 0;
+  }
+.nav__list .nav__list:before {
+  border-bottom-color: $neutralcolor;
+	border-width: 6px;
+	margin-left: -1px;
+  }
+
+.nav__list .nav__list .nav__list:after,
+.nav__list .nav__list .nav__list:before {
+  left: (($horizontal-gutter / 2) - 2) * -1 ; // menu padding - border width
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+  }
+  .nav__list .nav__list .nav__list:after {
+    border-right-color: $white;
+  	border-width: 5px;
+  	top: 5px;
+    }
+  .nav__list .nav__list .nav__list:before {
+    border-right-color: $neutralcolor;
+  	border-width: 6px;
+  	top: 5px;
+  	margin-top: -1px;
+  	margin-left: -2px;
+    }
+
+// end full-size media query
+}
