@@ -19,7 +19,7 @@
 .main-site-nav {
   position: fixed;
   top: 0;
-/*   left: -$navMenuWidth; */
+  left: -$navMenuWidth;
   bottom: 0;
   width: $navMenuWidth;
   z-index: 3;
