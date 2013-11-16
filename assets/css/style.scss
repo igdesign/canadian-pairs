@@ -36,12 +36,14 @@
 @import "modules/m-navigation-footer-nav";
 @import "modules/m-site-logo";
 @import "modules/m-twitter";
+@import "modules/m-sponsor";
 
 // Blocks
 @import "blocks"; // Layout
 @import "blocks/b-header";
 @import "blocks/b-colophon";
 @import "blocks/b-footer";
+@import "blocks/b-sponsor";
 
 // Pages
 // @import "pages/specific-page-class"; // target specific page

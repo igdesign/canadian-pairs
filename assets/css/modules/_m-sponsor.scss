@@ -1,0 +1,111 @@
+/**
+ * Sponsor Layout
+ */
+.sponsor,
+.sponsor-new { // block
+  @extend %grid__item;
+  }
+
+.sponsor__inner { // element
+  display: block;
+  height: 250px;
+  }
+
+.sponsor__row { //element
+  @extend %grid--full;
+  height: 33.333%;
+  }
+
+.sponsor__cell { //element
+  @extend %grid__item;
+  @extend %bp1--one-third;
+  @extend %bp2--one-third;
+  overflow: visible;
+  height: 100%;
+  position: relative;
+  }
+
+.sponsor__row--top    { @extend .sponsor__row }
+.sponsor__row--middle { @extend .sponsor__row }
+.sponsor__row--bottom { @extend .sponsor__row }
+
+.sponsor__cell--top-left   { @extend .sponsor__cell }
+.sponsor__cell--top-center { @extend .sponsor__cell }
+.sponsor__cell--top-right  { @extend .sponsor__cell }
+
+.sponsor__cell--middle-left   { @extend .sponsor__cell }
+.sponsor__cell--middle-center { @extend .sponsor__cell }
+.sponsor__cell--middle-right  { @extend .sponsor__cell }
+
+.sponsor__cell--bottom-left   { @extend .sponsor__cell }
+.sponsor__cell--bottom-center { @extend .sponsor__cell }
+.sponsor__cell--bottom-right  { @extend .sponsor__cell }
+
+
+
+.position {
+  position: absolute;
+}
+
+.tl {
+  @extend .position;
+  top: 0;
+  left: 0;
+}
+.tc {
+  @extend .position;
+  top: 0;
+  right: 0;
+  left: 0;
+}
+.full {
+  @extend .position;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+
+
+
+/**
+ * Specific Sponsors
+ */
+
+.inside-golf {}
+.inside-golf .sponsor__inner {
+  @include linear-gradient(#666,#fff);
+}
+.inside-golf .sponsor__cell--top-left {
+  @include hide(image-replacement);
+  background-image: url('/sponsors/inside-golf/are-you-inside-golf.png');
+  background-repeat: no-repeat;
+}
+
+
+
+.inside-golf-new.sponsor-new {
+  position: relative;
+  border: 1px solid black;
+}
+.inside-golf-new .sponsor__inner {
+  @include linear-gradient(#666,#fff);
+}
+.inside-golf-new .tagline {
+  @extend .tl;
+  background-image: url('/sponsors/inside-golf/are-you-inside-golf.png');
+  background-repeat: no-repeat;
+  background-position: center center;
+  display: block;
+  width: 100%;
+  text-indent: -999em;
+}
+.inside-golf-new .logo {
+  @extend .full;
+  background-image: url('/sponsors/inside-golf/ig14-logo.png');
+  background-repeat: no-repeat;
+  background-position: center 80%;
+  background-size: 90%;
+  display: block;
+}
