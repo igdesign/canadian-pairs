@@ -173,8 +173,8 @@ module.exports = (grunt) ->
   grunt.registerTask 'css', [
     'sass'
     'autoprefixer'
-#     'cssmin'
-#     'usebanner:css'
+    'cssmin'
+    'usebanner:css'
     'copy:css'
     'copy:css_dev'
   ]

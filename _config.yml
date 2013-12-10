@@ -16,7 +16,7 @@ exclude:     ['Gruntfile.coffee', 'package.json', 'node_modules', '_assets']    
 destination: "_site" # Where jekyll will build the site to
 permalink:   /:categories/:title # how urls will be created. eg: "website.com/category/title"
 charset:     utf-8 # Website character set
-baseurl:     /canadian-pairs     # root
+baseurl:     "" # root
 url:         "http://canadianpairs.ca"    # primary url the website will reside at
 # /build stuff
 ##############
