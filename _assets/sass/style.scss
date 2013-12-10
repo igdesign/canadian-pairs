@@ -197,9 +197,29 @@ section {
 .main-section h4 {}
 .main-section p {}
 
+
 .main-section {
   @extend %grid;
   margin: 0 $gutter--horizontal;
+}
+
+.home {
+  .main-section__source {
+    -webkit-flow-into: main-thread;
+  }
+
+  .main-section__region {
+    -webkit-flow-from: main-thread;
+    max-height: 275px;
+
+    @extend %grid__item;
+    @extend %bp5--one-half;
+
+
+    @include breakpoint($bp5, min-width) {
+      max-height: 200px;
+    }
+  }
 }
 
 // !Colophon
@@ -256,7 +276,6 @@ section {
 /* END STYLE ***************/
 // Helpers
 @import "print";
-
 /* @include bp-helper; */
 
 
