@@ -1,0 +1,31 @@
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={{site.charset}}">
+<meta http-equiv="cleartype" content="on">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<title>{% include fragment/html-head_title.html %}</title>
+
+{% if site.mobile-optimized %}
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  {% if site.web-app-enabled %}
+    {% include html/web-app.html %}
+  {% endif %}
+{% endif %}
+
+<!-- Stylesheets -->
+<link rel="stylesheet" href="/assets/css/style.css" type="text/css" />
+
+<!-- Icons -->
+<link rel="logo" type="image/svg" href="{{site.url}}/logo.svg" />
+<link rel="shortcut icon" href="/assets/img/favicon-32x32.png">
+
+
+{% if site.rss-enabled %}
+<!-- RSS Feed -->
+<link href="{{site.rss-feed}}" rel="alternate" type="application/rss+xml" title="{{site.name}} RSS Feed" />
+{% endif %}
+
+
+<!-- Prefetching -->
+{% include html/prefetch.html %}

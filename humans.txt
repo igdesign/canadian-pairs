@@ -1,0 +1,14 @@
+# humanstxt.org/
+# The humans responsible & technology
+
+# TEAM
+
+    <name> -- <role> -- <twitter>
+
+# THANKS
+
+    <name>
+
+# TECHNOLOGY
+
+
