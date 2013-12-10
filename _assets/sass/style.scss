@@ -1,0 +1,300 @@
+// Tools
+// -----
+@import "_functions";
+@import "_utilities";
+
+// !Variables
+// ----------
+$bp1: em(479px);
+$bp2: em(480px);
+$bp3: em(600px);
+$bp4: em(768px);
+$bp5: em(992px);
+$bp6: em(1207px);
+$bp7: em(1382px);
+
+$transitionSpeed: .3s;
+
+// Shadows
+$shadow__vertical: 1px;
+$shadow__horizontal: 1px;
+$shadow__feather: 2px;
+$shadow__color: rgba(0,0,0,0.33);
+$shadow__spread: 0;
+
+$shadow--top: 0 $shadow__vertical $shadow__feather $shadow__color;
+$shadow--top-left: $shadow__horizontal $shadow__vertical $shadow__feather $shadow__color;
+$shawow--top-right: ($shadow__horizontal * -1) $shadow__vertical $shadow__feather $shadow__color;
+$shadow--left: $shadow__horizontal 0 $shadow__feather $shadow__color;
+$shadow--right: ($shadow__horizontal * -1) 0 $shadow__feather $shadow__color;
+
+// Colors 2.0
+$color--white: #fff;
+$color--black: #000;
+$color--dark: #333;
+$color--medium: #444;
+$color--light: #ccc;
+$color--highlight: #28978c;
+$color--translucent: rgba(0,0,0,0.3);
+$color--neutral: $color--light;
+
+
+// Sizes
+$size--small: 0.667em;
+$size--h6   : 0.75em;
+$size--h5   : 0.83em;
+$size--base : 1em;
+$size--h4   : 1em;
+$size--h3   : 1.17em;
+$size--h2   : 1.75em;
+$size--h1   : 2em;
+
+// Gutter
+$gutter:       24px;
+$gutter--narrow: 12px;
+$gutter--skinny: 6px;
+$gutter--horizontal: $gutter;
+$gutter--vertical: $gutter;
+
+// Dimensions
+$width--touch-target: 44px;
+$width--menu: 100%;
+$height--touch-target: 44px;
+
+// Grid
+$grid--responsive: true!default;
+$grid--mobile-first: true!default;
+$grid--use-silent-classes: true!default;
+$grid--push: false!default;
+$grid--pull: false!default;
+$grid--use-markup-fix: true!default;
+$grid--breakpoints: (
+  'bp1' '(max-width: '+$bp1+')',
+  'bp2' '(min-width: '+$bp2+')',
+  'bp3' '(min-width: '+$bp3+')',
+  'bp4' '(min-width: '+$bp4+')',
+  'bp5' '(min-width: '+$bp5+')',
+  'bp6' '(min-width: '+$bp6+')',
+  'bp7' '(min-width: '+$bp7+')'
+)!default;
+$grid--breakpoint-has-widths: ('bp1', 'bp2', 'bp3', 'bp4', 'bp5', 'bp6', 'bp7')!default;
+$grid--breakpoint-has-push:   ('palm', 'lap', 'portable', 'desk')!default;
+$grid--breakpoint-has-pull:   ('palm', 'lap', 'portable', 'desk')!default;
+$grid--class-type: unquote(".");
+
+// Imports
+ @import "_extends"; @import "_mixins"; @import "_grid"; @import "_normalize"; @import "base";
+
+
+/**
+ * Style
+ * Created By: Gregory Daynes
+ */
+
+
+// !General Styles
+// ---------------
+a {
+  color: $color--highlight;
+  text-decoration: none;
+  border-bottom: 1px dotted $color--highlight;
+}
+
+section {
+  margin-top: $gutter--vertical;
+  padding-bottom: $gutter--vertical;
+}
+
+.section-header {
+  @extend %grid__item;
+  @extend %bp1--one-whole;
+}
+
+
+// !Navigation
+// -----------
+.main-site-nav {}
+.main-site-nav__list {}
+.main-site-nav__item {}
+.main-site-nav__item a
+.main-site-nav__item:hover,
+.main-site-nav__item:focus,
+.main-site-nav__item:active {}
+.main-site-nav__item.is-active {}
+.main-site-nav__item.is-active a {}
+.main-site-nav__item.is-active:hover  a,
+.main-site-nav__item.is-active:focus  a,
+.main-site-nav__item.is-active:active a {}
+
+.main-site-nav .section-header {
+  @extend %zero;
+  @include hide(hide-text);
+}
+
+
+.main-site-nav__list {
+  @extend %list-style-none;
+}
+
+.main-site-nav__item {
+  display: table-cell;
+  width: 1%;
+
+  a {
+    text-align: center;
+    display: block;
+    height: $height--touch-target;
+    min-height: $height--touch-target;
+    border-bottom: none;
+    width: 100%;
+    line-height: $height--touch-target;
+  }
+
+  span {
+    border-radius: 10px;
+    width: 90%;
+    display: inline-block;
+    height: $height--touch-target / 2;
+    line-height: $height--touch-target / 2;
+  }
+
+  &.is-active span, &:hover span, &:focus span, &:active span {
+    color: $color--white;
+    background-color: $color--highlight;
+    box-shadow: inset $shadow--top;
+    text-shadow: $shadow--top
+  }
+}
+
+
+// !Header
+// -------
+.header {}
+.header__logo {}
+.header__tagline {}
+
+.header__logo {
+  @include hide(image-replacement);
+  background-image: url(../img/canadian_pairs-logo.png);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: auto;
+  height: 300px;
+
+  @include breakpoint($bp1, max-width) {
+    background-size: contain;
+    margin: 0 20px;
+  }
+}
+
+// !Main Content
+// -------------
+.main-section {}
+.main-section h3 {}
+.main-section ol {}
+.main-section ul {}
+.main-section li {}
+.main-section h4 {}
+.main-section p {}
+
+.main-section {
+  @extend %grid;
+  margin: 0 $gutter--horizontal;
+}
+
+// !Colophon
+// ---------
+.colophon {}
+.section-header {}
+.contact {}
+.contact__company {}
+.contact__content {}
+.contact__info {}
+.contact__info--telephone {}
+.contact__info--email {}
+
+.colophon {
+  @extend %grid;
+  margin-top: $gutter--vertical;
+  background-color: lighten($color--light, 10%);
+  padding: 0 $gutter--horizontal;
+}
+
+.colophon .contact {
+  @extend %grid__item;
+  @extend %bp2--one-half;
+}
+
+// !Footer
+// -------
+.footer {}
+.footer-copyright {}
+.footer-nav {}
+.footer-nav__list {}
+.footer-nav__item {}
+.footer-nav__item a {}
+
+.footer {
+  border-top: 2px solid lighten($color--light, 10%);
+  background-color: $color--light;
+  padding-top: $gutter--vertical;
+  text-align: center;
+
+}
+
+.footer-nav__list {
+  @extend %list-style-none;
+}
+
+.footer-nav__item {
+  display: inline;
+  @include font-size($size--small, 1);
+}
+
+
+
+/* END STYLE ***************/
+// Helpers
+@import "print";
+
+@include bp-helper;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
