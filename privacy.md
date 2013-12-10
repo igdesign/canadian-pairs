@@ -70,4 +70,4 @@ If you have any questions about this Privacy Policy, the practices of this site,
 {{ site.url }}<br />
 {{ site.email }}
 
-This document was last updated on May 28, 2013
+This document was last updated on {{ site.time | date: "%Y-%m-%d" }}

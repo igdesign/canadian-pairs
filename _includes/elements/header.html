@@ -1,8 +1,10 @@
 <header class="header" role="banner">
-  <hgroup class="header--site-logo">
-    <h1 class="site-logo__name">
-      {{ site.name }}<!--
-   --><small class="site-logo__tagline">{{ site.tagline }}</small>
+  <div class="header__logo">
+    <h1>
+      {{ site.name }}
+      {% if site.tagline != null %}
+      <span class="logo__tagline">{{ site.tagline }}</span>
+      {% endif %}
     </h1>
-  </hgroup>
+  </div>
 </header>

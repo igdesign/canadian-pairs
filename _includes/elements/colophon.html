@@ -1,27 +1,15 @@
 <section class="colophon">
-  <h2 class="colophon__header section__header">Contact Information</h2>
-
-  <div class="colophon--company">
-    <h2 class="company__header">The Canadian Pairs</h2>
-
-    <div class="company--contact">
-      <ul class="contact__info">
-        <li class="contact__info__name">Deb Westover</li><!--
-     --><li class="contact__info__telephone"><a href="tel:1-800-764-6537">+1-800 764-6537</a></li><!--
-     --><li class="contact__info__email-address"><a href="mailto:dwestover@insidegolf.ca">dwestover@insidegolf.ca</a></li></li>
-      </ul>
-    </div>
+  <h2 class="section-header">Contact</h2>
+  <!--
+  {% for post in site.categories.people %}
+  --><div class="contact">
+    <div class="contact__company">{{ post.title }}</div>
+    <div class="contact__content">{{ post.content }}</div>
+    <ul class="contact__info">
+      <li class="contact__info--telephone">{{ post.telephone }}</li>
+      <li class="contact__info--email">{{ post.email }}</li>
+    </ul>
   </div><!--
-
---><div class="colophon--company">
-    <h2 class="company__header">Crown Isle Golf Resort</h2>
-
-    <div class="company--contact">
-      <ul class="contact__info">
-        <li class="contact__info__name">Maris Russell</li><!--
-     --><li class="contact__info__telephone"><a href="tel:1-888-338-8439">+1-888 338-8439</a></li><!--
-     --><li class="contact__info__email-address"><a href="mailto:mrsussel@crownisle.ca">mrussel@crownisle.ca</a></li></li>
-      </ul>
-    </div>
-  </div>
+  {% endfor %}
+  -->
 </section>

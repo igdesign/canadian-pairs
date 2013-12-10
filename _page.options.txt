@@ -1,0 +1,11 @@
+page.date-modified
+page.date-created
+page.keywords
+page.title
+page.url
+page.description
+page.graph_image
+page.graph_image_type
+page.graph_image_width
+page.graph_image_height
+page.body-class

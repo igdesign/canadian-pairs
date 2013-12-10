@@ -1,50 +1,85 @@
-markdown: rdiscount
-safe: false
-lsi: false
+########################
+# !Github Pages Defaults
+# if the website will not be run on google pages, remove the following
+markdown: "rdiscount"
+safe:     false
+lsi:      false
 pygments: true
-exclude: ['node_modules', 'Gruntfile.coffee', 'package.json', 'params.json', 'README.md', 'assets', 'tmp']
-
-destination: _build
-
-# Site stuff
-permalink: /:categories/:title
-charset:   utf-8
-baseurl:   /
-url:       http://localhost:4000
-
-tag_page_layout: tag_page
-tag_page_dir: tag
-
-# Specific stuff
-version:      0.0.1
-date:         2013-10-15
-language:     en-GB
-license:      Apache License v2.0. http://www.apache.org/licenses/LICENSE-2.0
-
-name:         Canadian Pairs
-name_short:   cp
-tagline:      "Presented by WestJet"
-color:        #1f978c
-email:        gregdaynes@gmail.com
-# Copyright: company or name to copyright year is generated from date above.
-
-copyright:    Inside Golf Inc. All rights reserved
-google:       UA-210752-16
-creator:      http://twitter.com/gregdaynes
-publisher:    Gregory Daynes
-keywords:
-description:
-twitter:      canadianpairs
-twitter_card: summary
-
-title-delimiter: ' • '
+# /github pages defaults
+########################
 
 
-# Prefetch
-dns-prefetch:
-  - twitter.com
-  - facebook.com
-  - mailchimp.com
 
-#resource-prefetch:
+##############
+# !Build Stuff
+exclude:     ['Gruntfile.coffee', 'package.json', 'node_modules', '_assets']    # Files and folders to skip when building
+destination: "_site" # Where jekyll will build the site to
+permalink:   /:categories/:title # how urls will be created. eg: "website.com/category/title"
+charset:     utf-8 # Website character set
+baseurl:     /     # root
+url:         "http://localhost:8080"    # primary url the website will reside at
+# /build stuff
+##############
+
+
+
+#####################
+# !Site Configuration
+name:      "The Canadian Pairs" # Site title
+name-safe: "canadian-pais" # Url safe version of site title. eg: "lowercase-dash-separated-text"
+tagline:   "Presented by WestJet" # Website tagline
+license:   "Apache License v2.0. http://www.apache.org/licenses/LICENSE-2.0" # Website license eg: "Apache License v2.0. http://www.apache.org/licenses/LICENSE-2.0"
+copyright: "Inside Golf Inc. All rights reserved." # Will format out to "©2013 Company Name Inc. All rights reserved."
+webmaster: "design@insidegolf.ca" # email address for master of website
+title-delimiter: " • " # Symbol to separate page title and site title. Include spaces. eg: "Home • Site Title"
+language:  "en" # base language for website
+
+# !- Publishing Information
+creator:     "@gregdaynes" # Name or twitter handle of the website creator
+email:       "gregdaynes@gmail.com" # email address of website creator
+publisher:   "@inside_golf" # name or twitter handle of publisher of website
+keywords:    "" # Keywords to describe website
+description: "" # Written description of website. Keep under 250 words if possible
+
+# !- Social
+twitter:      "@canadianpairs" # Twitter handle for website
+twitter-card: "summary" # style of twitter cards. eg: "summary"
+# /site configuration
+#####################
+
+
+
+####################
+# !Advanced Settings
+
+# !- analytics
+analytics:           true # enable analytics. boolean
+analytics-id:        "UA-210752-16" # Google analytics tracking number. eg "UA-XXXXXX-XX"
+analytics-optimized: true # Google analytics version to use. normal | optimized
+
+# !- RSS
+rss-enabled:    true # enable rss. true | false
+rss-feed:       "/feed.rss" # location of feed. eg: "/feed.rss"
+
+# !- Mobile
+mobile-optimized: true # is the website mobile optimized. true | false
+
+# !- Web App Options
+web-app-enabled: true # options: yes, no
+web-app-title:   "Canadian Pairs" # tip: keep it short
+web-app-style:   "default" # options: default, black, black-translucent
+web-app-color:   "#28978c" # used for Windows 8 / RT
+
+# !- dns-prefetch
+# Identifies a DNS query to resolve the background, so that requests can occur more quickly.
+#dns-prefetch:
+#  - twitter.com
+#  - facebook.com
+#  - mailchimp.com
+
+# !- resource-prefetch:
+# Identifies a resource file, such as an image or a CSS stylesheet, to be downloaded into the cache.
+#prefetch:
+#  - "http://example.com/css/style.css"
+
 

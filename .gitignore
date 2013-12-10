@@ -2,7 +2,5 @@ _site/
 .DS_Store
 *.sass-cache
 node_modules
-_archive
-_build
-tmp
-*.sketch*
+.tmp
+_site

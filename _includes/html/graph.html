@@ -1,10 +1,9 @@
 <!-- General/Meta -->
-<meta name='page-version' content="{{site.version}}">
-<meta name="page-datetime" content="{{site.date}}">
+<meta name="page-datetime" content="{% if page.date-modified %}{{page.date-modified}}{% else if page.date-created %}{{page.date-created}}{% else %}{{site.time | date: "%Y-%m-%d"}}{% endif %}">
 <meta name="author" content="/humans.txt">
 <meta name="keywords" content="{{page.keywords}} {{site.keywords}}">
 <meta name="generator" content="{{site.publisher}}">
-<meta name="no-email-collection" content="/terms.html">
+<meta name="no-email-collection" content="/terms-of-service">
 <meta name="description" content="{{site.description}}">
 
 <!-- Facebook/Open Graph -->
@@ -20,9 +19,9 @@
 <meta property="og:image:height" content="{% if page.graph_image_height %}{{page.graph_image_height}}{% else %}200{% endif %}">
 
 <!-- Twitter/Card -->
-<meta name="twitter:card" content="{{site.twitter_card}}"> 
-<meta name="twitter:site" content="{{site.twitter}}"> 
-<meta name="twitter:creator" content="{{site.twitter}}"> 
+<meta name="twitter:card" content="{{site.twitter-card}}">
+<meta name="twitter:site" content="{{site.twitter}}">
+<meta name="twitter:creator" content="{{site.twitter}}">
 <meta name="twitter:url" content="{{site.url}}{% if page.url != "/" %}{{page.url}}{% endif %}">
 <meta name="twitter:description" content="{% if page.description %}{{page.description}} {% endif %}{{site.description}}">
 <meta name="twitter:title" content="{% if page.url != "/" %}{{page.title}} | {% endif %}{{site.name}}">
