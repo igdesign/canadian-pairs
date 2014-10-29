@@ -1,15 +1,17 @@
-<section class="colophon">
-  <h2 class="section-header">Contact</h2>
-  <!--
-  {% for post in site.categories.people %}
-  --><div class="contact">
-    <div class="contact__company">{{ post.title }}</div>
-    <div class="contact__content">{{ post.content }}</div>
-    <ul class="contact__info">
-      <li class="contact__info--telephone">{{ post.telephone }}</li>
-      <li class="contact__info--email">{{ post.email }}</li>
-    </ul>
-  </div><!--
-  {% endfor %}
-  -->
-</section>
+<div class="colophon">
+    <div class="[ container ]">
+        <h2 class="section-header">Contact</h2>
+        <div class="[ row ]">
+            {% for post in site.categories.people %}
+            <div class="contact  [ col-xs-12  col-md-6 ]">
+                <div class="contact__company  [ h2 ]">{{ post.title }}</div>
+                <div class="contact__content  ">{{ post.content }}</div>
+                <ul class="contact__info">
+                    <li class="contact__info--telephone">{{ post.telephone }}</li>
+                    <li class="contact__info--email">{{ post.email }}</li>
+                </ul>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>

@@ -1,14 +1,15 @@
 ########################
 # !Github Pages Defaults
 # if the website will not be run on google pages, remove the following
-markdown: "rdiscount"
-safe:     false
-lsi:      false
-pygments: true
+safe: true
+lsi: false
+highlighter: pygments
 # /github pages defaults
 ########################
 
-
+sass:
+    sass_dir: _sass
+    style: compressed
 
 ##############
 # !Build Stuff

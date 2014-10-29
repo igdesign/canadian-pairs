@@ -1,9 +1,25 @@
-<nav class="main-site-nav">
-  <h2 class="section-header">Main Site Navigation</h2>
-  <ul class="main-site-nav__list">
-    <li class="main-site-nav__item  {% if page.body-class contains"home" %}is-active{% endif %}"><a href="{{site.baseurl}}/"><span>Home</span></a></li><!--
- --><li class="main-site-nav__item  {% if page.body-class contains"schedule" %}is-active{% endif %}"><a href="{{site.baseurl}}/schedule"><span>Schedule</span></a></li><!--
- --><li class="main-site-nav__item  {% if page.body-class contains"rules" %}is-active{% endif %}"><a href="{{site.baseurl}}/rules"><span>Rules</span></a></li><!--
- --><li class="main-site-nav__item  {% if page.body-class contains"clubs" %}is-active{% endif %}"><a href="{{site.baseurl}}/clubs"><span>Clubs</span></a></li>
-  </ul>
+<nav class="main-site-nav  [ navbar navbar-default navbar-fixed-top ]">
+    <h2 class="section-header">Main Site Navigation</h2>
+    <div class=" [ container ]">
+
+
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">{{site.name}}</a>
+        </div>
+
+        <div class="[ collapse navbar-collapse ]"  id="bs-example-navbar-collapse-1">
+            <ul class="[ nav navbar-nav ]  navbar-right">
+                <li class="{% if page.body-class contains"home" %}active{% endif %}"><a href="{{site.baseurl}}/"><span>Home</span></a></li>
+                <li class="{% if page.body-class contains"schedule" %}active{% endif %}"><a href="{{site.baseurl}}/schedule"><span>Schedule</span></a></li>
+                <li class="{% if page.body-class contains"rules" %}active{% endif %}"><a href="{{site.baseurl}}/rules"><span>Rules</span></a></li>
+                <li class="{% if page.body-class contains"clubs" %}active{% endif %}"><a href="{{site.baseurl}}/clubs"><span>Clubs</span></a></li>
+            </ul>
+        </div>
+    </div>
 </nav>

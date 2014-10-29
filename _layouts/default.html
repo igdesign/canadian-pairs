@@ -9,13 +9,18 @@
 
 {% include elements/header.html %}
 
-<section class="main-section">
-  <h1>{{page.title}}</h1>
-    <div class="main-section__region"></div><!--
- --><div class="main-section__region"></div><!--
- --><div class="main-section__region"></div><!--
- --><div class="main-section__source">{{content}}</div>
-</section>
+<main class="main-section  [ container ]">
+    <div class="[ row ]">
+        <div class="[ col-xs-12 ]">
+            <h1>{{page.title}}</h1>
+        </div>
+    </div>
+    <div class="main-content  [ row ]">
+        <div class="[ col-xs-12 ]">
+            {{content}}
+        </div>
+    </div>
+</main>
 
 {% include elements/colophon.html %}
 
