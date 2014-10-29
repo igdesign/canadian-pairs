@@ -181,12 +181,17 @@ body {
     }
 
     @include breakpoint(1440px, min-width, screen) {
-        -webkit-columns: 3;
-           -moz-columns: 3;
-            -ms-columns: 3;
-             -o-columns: 3;
-                columns: 3;
+        -webkit-columns: 2;
+           -moz-columns: 2;
+            -ms-columns: 2;
+             -o-columns: 2;
+                columns: 2;
     }
+
+}
+
+.home .main-content img {
+    max-width: 100%;
 
 }
 
